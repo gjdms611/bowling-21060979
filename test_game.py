@@ -27,3 +27,23 @@ def test_spare_bonus_roll_also_counts_toward_next_frame():
     for _ in range(16):
         game.roll(0)
     assert game.score() == 17
+
+
+def test_strike_bonus():
+    game = Game()
+    game.roll(10)
+    game.roll(3)
+    game.roll(4)
+    for _ in range(16):
+        game.roll(0)
+    assert game.score() == 24
+
+
+def test_strike_in_ninth_frame():
+    game = Game()
+    for _ in range(16):
+        game.roll(0)
+    game.roll(10)
+    game.roll(6)
+    game.roll(2)
+    assert game.score() == 26
