@@ -47,3 +47,10 @@ def test_strike_in_ninth_frame():
     game.roll(6)
     game.roll(2)
     assert game.score() == 26
+
+
+def test_perfect_game():
+    game = Game()
+    for _ in range(12):
+        game.roll(10)
+    assert game.score() == 300
