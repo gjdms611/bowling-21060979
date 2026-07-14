@@ -74,3 +74,31 @@ def test_tenth_frame_strike_with_bonus_rolls():
     game.roll(4)
     game.roll(5)
     assert game.score() == 19
+
+
+def test_scenario_1():
+    game = Game()
+    for pins in [8, 2, 9, 0, 9, 1, 10, 7, 1, 10, 6, 3, 10, 6, 3, 10, 8, 0]:
+        game.roll(pins)
+    assert game.score() == 148
+
+
+def test_scenario_2():
+    game = Game()
+    for pins in [10, 9, 1, 7, 0, 9, 1, 10, 10, 8, 2, 10, 9, 1, 9, 1, 7]:
+        game.roll(pins)
+    assert game.score() == 188
+
+
+def test_scenario_3_incomplete_last_frame():
+    game = Game()
+    for pins in [9, 1, 5, 4, 3, 7, 7, 3, 10, 6, 0, 6, 0, 8, 1, 5, 4]:
+        game.roll(pins)
+    assert game.score() == 107
+
+
+def test_scenario_4():
+    game = Game()
+    for pins in [4, 0, 5, 0, 8, 0, 10, 1, 8, 1, 0, 6, 4, 8, 0, 9, 0, 7, 1]:
+        game.roll(pins)
+    assert game.score() == 89
