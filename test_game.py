@@ -102,3 +102,13 @@ def test_scenario_4():
     for pins in [4, 0, 5, 0, 8, 0, 10, 1, 8, 1, 0, 6, 4, 8, 0, 9, 0, 7, 1]:
         game.roll(pins)
     assert game.score() == 89
+
+
+def test_unresolved_strike_excludes_frame_and_later():
+    game = Game()
+    for _ in range(7):
+        game.roll(1)
+        game.roll(1)
+    game.roll(10)
+    game.roll(10)
+    assert game.score() == 14
